@@ -31,5 +31,19 @@
       <button type="submit">Send</button>
       <div data-netlify-recaptcha="true"></div>
     </form>
+
+    <h2>Honeypot</h2>
+    <form
+      name="honeypot"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <p>
+        <label>Bot Field: <input name="bot-field"/></label>
+      </p>
+      <label>Your Name: <input type="text" name="name"/></label>
+      <button type="submit">Send</button>
+    </form>
   </body>
 </html>
