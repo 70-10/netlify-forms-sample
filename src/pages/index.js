@@ -5,6 +5,7 @@ export default () => (
     <h1>Netlify Forms Sample</h1>
     <h2>Basic</h2>
     <form name="basic" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="basic" />
       <label>
         Your Name: <input type="text" name="name" />
       </label>
@@ -18,6 +19,7 @@ export default () => (
       data-netlify="true"
       action="/success"
     >
+      <input type="hidden" name="form-name" value="custom-success-page" />
       <label>
         Your Name: <input type="text" name="name" />
       </label>
@@ -26,6 +28,7 @@ export default () => (
 
     <h2>reCAPTCHA</h2>
     <form name="explicit-recaptcha" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="explicit-recaptcha" />
       <label>
         Your Name: <input type="text" name="name" />
       </label>
@@ -40,6 +43,7 @@ export default () => (
       data-netlify="true"
       netlify-honeypot="bot-field"
     >
+      <input type="hidden" name="form-name" value="honeypot" />
       <p>
         <label>
           Bot Field: <input name="bot-field" />
