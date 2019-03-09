@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Netlify Forms Sample</title>
-  </head>
-  <body>
+import React from "react";
+
+export default () => (
+  <div>
     <h1>Netlify Forms Sample</h1>
     <h2>Basic</h2>
     <form name="basic" method="POST" data-netlify="true">
-      <label>Your Name: <input type="text" name="name"/></label>
+      <label>
+        Your Name: <input type="text" name="name" />
+      </label>
       <button type="submit">Send</button>
     </form>
 
@@ -19,16 +16,20 @@
       name="custom-success-page"
       method="POST"
       data-netlify="true"
-      action="/success.html"
+      action="/success"
     >
-      <label>Your Name: <input type="text" name="name"/></label>
+      <label>
+        Your Name: <input type="text" name="name" />
+      </label>
       <button type="submit">Send</button>
     </form>
 
     <h2>reCAPTCHA</h2>
     <form name="explicit-recaptcha" method="POST" data-netlify="true">
-      <label>Your Name: <input type="text" name="name"/></label>
-      <div data-netlify-recaptcha="true"></div>
+      <label>
+        Your Name: <input type="text" name="name" />
+      </label>
+      <div data-netlify-recaptcha="true" />
       <button type="submit">Send</button>
     </form>
 
@@ -40,10 +41,14 @@
       netlify-honeypot="bot-field"
     >
       <p>
-        <label>Bot Field: <input name="bot-field"/></label>
+        <label>
+          Bot Field: <input name="bot-field" />
+        </label>
       </p>
-      <label>Your Name: <input type="text" name="name"/></label>
+      <label>
+        Your Name: <input type="text" name="name" />
+      </label>
       <button type="submit">Send</button>
     </form>
-  </body>
-</html>
+  </div>
+);

@@ -1,0 +1,19 @@
+{
+  "name": "netlify-forms-sample",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "repository": "70-10/netlify-forms-sample",
+  "license": "MIT",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop"
+  },
+  "dependencies": {
+    "gatsby": "^2.1.27",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
