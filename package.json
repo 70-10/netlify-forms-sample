@@ -1,0 +1,15 @@
+{
+  "name": "netlify-forms-sample",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "repository": "70-10/netlify-forms-sample",
+  "license": "MIT",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'success'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
