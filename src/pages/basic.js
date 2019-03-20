@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navigateTo } from "gatsby";
+import { navigate } from "gatsby";
 
 export default function Basic() {
   const formName = "basic";
@@ -13,7 +13,6 @@ export default function Basic() {
 
   const submit = async e => {
     e.preventDefault();
-
     await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -23,7 +22,7 @@ export default function Basic() {
       })
     });
 
-    navigateTo(actionPath);
+    navigate(actionPath);
   };
 
   const updateField = e =>
@@ -48,12 +47,7 @@ export default function Basic() {
       </label>
       <label>
         Messages:
-        <input
-          type="text"
-          value={form.message}
-          name="message"
-          onChange={updateField}
-        />
+        <textarea value={form.message} name="message" onChange={updateField} />
       </label>
       <button type="submit">submit</button>
     </form>
