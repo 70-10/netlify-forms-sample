@@ -1,60 +1,61 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { navigateTo } from "gatsby";
-function encode(data) {
-  return Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join("&");
-}
 
-export default class Basic extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: "" };
-    this.changeName = this.changeName.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+export default function Basic() {
+  const formName = "basic";
+  const actionPath = "/success";
+  const [form, setValues] = useState({ name: "", message: "" });
 
-  changeName(e) {
-    this.setState({ name: e.target.value });
-  }
+  const encode = data =>
+    Object.keys(data)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join("&");
 
-  async handleSubmit(e) {
+  const submit = async e => {
     e.preventDefault();
-    const form = e.target;
 
     await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state
+        "form-name": formName,
+        ...form
       })
     });
-    navigateTo(form.getAttribute("action"));
-  }
-  render() {
-    return (
-      <div>
-        <h1>Basic</h1>
-        <form
-          name="basic"
-          method="POST"
-          data-netlify="true"
-          action="/success"
-          onSubmit={this.handleSubmit}
-        >
-          <label>
-            Your Name:{" "}
-            <input
-              type="text"
-              name="name"
-              value={this.state.name}
-              onChange={this.changeName}
-            />
-          </label>
-          <button type="submit">Send</button>
-        </form>
-      </div>
-    );
-  }
+
+    navigateTo(actionPath);
+  };
+
+  const updateField = e =>
+    setValues({ ...form, [e.target.name]: e.target.value });
+
+  return (
+    <form
+      name={formName}
+      method="POST"
+      data-netlify="true"
+      action={actionPath}
+      onSubmit={submit}
+    >
+      <label>
+        Your Name:
+        <input
+          type="text"
+          value={form.name}
+          name="name"
+          onChange={updateField}
+        />
+      </label>
+      <label>
+        Messages:
+        <input
+          type="text"
+          value={form.message}
+          name="message"
+          onChange={updateField}
+        />
+      </label>
+      <button type="submit">submit</button>
+    </form>
+  );
 }
