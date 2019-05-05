@@ -9,6 +9,10 @@ export default () => (
       <label>
         Your Name: <input type="text" name="name" />
       </label>
+
+      <label>
+        Message: <textarea name="message" id="" cols="30" rows="10" />
+      </label>
       <button type="submit">Send</button>
     </form>
 
