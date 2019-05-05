@@ -1,10 +1,9 @@
 import React from "react";
-import useForm from "react-hook-form";
 import { navigate } from "gatsby";
 import qs from "querystring";
+import { Formik, Form, Field } from "formik";
 
 export const Basic = ({ name, successPath }) => {
-  const { register, handleSubmit, errors } = useForm();
   const onSubmit = async data => {
     await fetch("/", {
       method: "POST",
@@ -18,24 +17,27 @@ export const Basic = ({ name, successPath }) => {
   };
 
   return (
-    <form
-      name={name}
-      method="POST"
-      data-netlify="true"
-      action={successPath}
-      onSubmit={handleSubmit(onSubmit)}
+    <Formik
+      initialValues={{
+        name: "",
+        message: ""
+      }}
+      onSubmit={onSubmit}
     >
-      <label>
-        Your Name:
-        <input type="text" name="name" ref={register({ required: true })} />
-        {errors.name && "Name is required"}
-      </label>
-      <label>
-        Messages:
-        <textarea name="message" ref={register({ required: true })} />
-        {errors.message && "Message is required"}
-      </label>
-      <button type="submit">submit</button>
-    </form>
+      {({ errors, touched }) => (
+        <Form>
+          <label>Name: </label>
+          <Field name="name" />
+          {errors.name && touched.name && errors.name}
+          <br />
+          <label>Message: </label>
+          <Field name="message" />
+          {errors.message && touched.message && errors.message}
+
+          <br />
+          <button type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
   );
 };
