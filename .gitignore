@@ -85,4 +85,8 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# Local Netlify folder
+.netlify
 
+### Project
+public/
