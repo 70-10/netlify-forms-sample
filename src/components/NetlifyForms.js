@@ -20,6 +20,7 @@ export const Basic = ({ name, successPath }) => {
     <Formik
       initialValues={{
         name: "",
+        email: "",
         message: ""
       }}
       onSubmit={onSubmit}
@@ -30,6 +31,11 @@ export const Basic = ({ name, successPath }) => {
           <Field name="name" />
           {errors.name && touched.name && errors.name}
           <br />
+
+          <label>Email: </label>
+          <Field name="email" />
+          {errors.email && touched.email && errors.email}
+
           <label>Message: </label>
           <Field name="message" />
           {errors.message && touched.message && errors.message}

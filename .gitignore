@@ -83,3 +83,6 @@ typings/
 
 # Gatsby
 public/
+
+# Netlify
+.netlify/
